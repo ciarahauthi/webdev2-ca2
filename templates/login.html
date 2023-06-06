@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<h1>Register</h1>
+
+<form method = "post" action="{{ url_for('register') }}" novalidate>
+    {{ register_form.hidden_tag() }}
+
+    {{ register_form.username.label }}
+    {{ register_form.username() }}
+    {% for error in register_form.username.errors %}
+        {{ error }}
+    {% endfor %}
+    <br />
+
+    {{ register_form.password.label }}
+    {{ register_form.password() }}
+    {% for error in register_form.password.errors %}
+        {{ error }}
+    {% endfor %}
+    <br />
+
+    {{ register_form.confirmPassword.label }}
+    {{ register_form.confirmPassword() }}
+    {% for error in register_form.confirmPassword.errors %}
+        {{ error }}
+    {% endfor %}
+    <br />
+
+    {{ register_form.submit() }}
+</form>
+<p> {{ register_message }} </p>
+
+<h1>Login</h1>
+
+
+{% if next_page %}
+<form method = "post" action="{{ url_for('login', next=next_page) }}" novalidate>
+{% else %}
+<form method = "post" action="{{ url_for('login') }}" novalidate>
+{% endif %}
+    {{ login_form.hidden_tag() }}
+
+    {{ login_form.username.label }}
+    {{ login_form.username() }}
+    {% for error in login_form.username.errors %}
+        {{ error }}
+    {% endfor %}
+    <br />
+
+    {{ login_form.password.label }}
+    {{ login_form.password() }}
+    {% for error in login_form.password.errors %}
+        {{ error }}
+    {% endfor %}
+    <br />
+
+    {{ login_form.submit() }}
+
+</form>
+<p> {{ login_error }} </p>
+
+{% endblock %}

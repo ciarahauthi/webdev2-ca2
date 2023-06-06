@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+<h1>Welcome, {{ g.user }} </h1>
+
+<h3><a href="{{ url_for ('deleteAccount') }}">Delete your account</a></h3>
+<h3><a href="{{ url_for ('deleteSave') }}">Delete your save data</a></h3>
+<h3><a href="{{ url_for ('logout') }}">LOGOUT</a></h3>
+
+{% endblock %}

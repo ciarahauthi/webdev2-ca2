@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Chicken</title>
+        <link rel="stylesheet" href="{{url_for('static', filename = 'styles.css')}}" />
+        <script type="module" src="{{url_for('static', filename = 'chicken.js')}}"></script>
+    </head>
+    <header id="header">
+        <h1><a href="{{ url_for('index')}}">CHICKEN RUN HOME</a></h1>
+        <nav>
+            <ul>
+                <li><a href="{{url_for('game')}}">PLAY NOW!</a></li>
+                {% if g.user %}
+                <li><a href="{{ url_for('my_account') }}">MY ACCOUNT</a></li>
+                {% else %}
+                <li><a href="{{ url_for('login') }}">REGISTER</a></li>
+                <li><a href="{{ url_for('login') }}">LOG IN</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <body>
+        <canvas width="800" height="560"></canvas>
+        <section class="gameinfo">
+            <button id="save">SAVE GAME</button>
+            <button id="new">NEW GAME</button>
+            <button id="load">LOAD GAME</button>
+
+            <section class="score">
+                <h4>Score: </h4>
+                <h4 id="score">0</h4>
+            </section>
+            
+
+        </section>
+    </body>
+    
+</html>
